@@ -1,3 +1,5 @@
+import {callAPI} from './apiCalls'
+
 let body = document.querySelector('body')
 let search = document.createElement('input');
 let btn = document.createElement('button')
@@ -5,17 +7,16 @@ btn.textContent = 'search'
 body.append(search, btn);
 
 btn.addEventListener('click', () => {
-    getWeatherData();
+    callAPI(search.value)
 })
 
+// should be individual functions for each of the required varaiables, each one
+// is called when the search button is clicked
+// Search button will after calling all the async functions and returning the data, call the
+// display results function.
 
-async function getWeatherData() {
-    let city = search.value
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5f9ff8597ccefcd57f95ed9c70d2de3e`
 
-    const response = await fetch(url, {mode: 'cors'});
-    const weatherData = await response.json();
-    console.log(weatherData.main.temp);
-    console.log(weatherData.weather[0].main)
-}
 
+/* get figures for each of main areas including location, temp, weather, humidty and min/max's
+write a for loop that loops through each item in the 'list' array, excluding 0 and 
+writes the temp, time, date, weather and chance of precipitation. */
