@@ -49,6 +49,7 @@ async function storeCurrentHumidity(weatherData) {
 }
 
 async function storeForecast(weatherData) {
+    results.forecastObjects = []
     let data = await weatherData
     let dataList = await data.list
     for (let i = 0; i < dataList.length; i++) {
