@@ -1,13 +1,16 @@
+import {loadPage} from './pageLoad'
 import {callAPI} from './apiCalls'
+import "./style.scss"
+import {displayResults} from './domManipulation'
 
-let body = document.querySelector('body')
-let search = document.createElement('input');
-let btn = document.createElement('button')
-btn.textContent = 'search'
-body.append(search, btn);
+loadPage();
 
-btn.addEventListener('click', () => {
-    callAPI(search.value)
+let search = document.querySelector('button');
+let input = document.querySelector('input')
+
+search.addEventListener('click', async () => {
+    let data = await callAPI(input.value)
+    displayResults(data);
 })
 
 // should be individual functions for each of the required varaiables, each one

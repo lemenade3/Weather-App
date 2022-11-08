@@ -8,72 +8,56 @@ async function getWeatherData(value) {
     return weatherData;
 }
 
-let currentCity;
-let currentTemp;
-let currentWeather;
-let currentMax;
-let currentMin;
-let currentHumidity;
-const forecastObjects = [];
+let results = {
+    currentCity: 0,
+    currentTemp: 0,
+    currentWeather: 0,
+    currentMax: 0,
+    currentMin: 0,
+    currentHumidity: 0,
+    forecastObjects: []
+}
 
 async function storeCurrentCity(weatherData) {
     let data = await weatherData;
-    currentCity = data.city.name
+    results.currentCity = data.city.name
 }
 
 async function storeCurrentTemp(weatherData) {
     let data = await weatherData;
-    currentTemp = data.list[0].main.temp
+    results.currentTemp = data.list[0].main.temp
 }
 
 async function storeCurrentWeather(weatherData) {
     let data = await weatherData;
-    currentWeather = data.list[0].weather[0].main
+    results.currentWeather = data.list[0].weather[0].main
 }
 
 async function storeCurrentMax(weatherData) {
     let data = await weatherData;
-    currentMax = data.list[0].main.temp_max
+    results.currentMax = data.list[0].main.temp_max
 }
 
 async function storeCurrentMin(weatherData) {
     let data = await weatherData;
-    currentMin = data.list[0].main.temp_min
+    results.currentMin = data.list[0].main.temp_min
 }
 
 async function storeCurrentHumidity(weatherData) {
     let data = await weatherData;
-    currentHumidity = data.list[0].main.humidity
+    results.currentHumidity = data.list[0].main.humidity
 }
 
 async function storeForecast(weatherData) {
     let data = await weatherData
     let dataList = await data.list
     for (let i = 0; i < dataList.length; i++) {
-        forecastObjects.push({
+        results.forecastObjects.push({
             dateTime: dataList[i].dt_txt,
             temp: dataList[i].main.temp,
             weather: dataList[i].weather[0].main
         })
     }
-}
-
-async function displayResults(weatherData) {
-    // this function should fill container fields with information from data variables
-    await weatherData.then(async () => {
-        console.log(currentCity);
-        console.log(currentTemp);
-        console.log(currentWeather);
-        console.log(currentMax);
-        console.log(currentMin);
-        console.log(currentHumidity);
-        
-        for (let i = 0; i < forecastObjects.length; i++) {
-                console.log(forecastObjects[i].dateTime) //date and time
-                console.log(forecastObjects[i].temp) //time temp
-                console.log(forecastObjects[i].weather) //weather
-        }
-    })
 }
 
 async function callAPI(value) {
@@ -84,9 +68,18 @@ async function callAPI(value) {
     storeCurrentMax(weatherData);
     storeCurrentMin(weatherData);
     storeCurrentHumidity(weatherData);
-    await storeForecast(weatherData).then(async () => {
-        displayResults(weatherData)
+    return await storeForecast(weatherData).then(async () => {
+        return results
     })
 }
 
 export {callAPI}
+
+/* call api should change values in an object that has values for each of the required
+current questions and forecast.
+
+call api should then return that object.
+
+Inside index.js callAPI can then be used as an argument in display results.
+
+display results then takes that object and uses it to populate the divs. */

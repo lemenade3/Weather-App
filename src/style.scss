@@ -1,0 +1,14 @@
+$body-color: red;
+$current-color: blue;
+
+body {
+  background-color: $body-color;
+}
+
+.data {
+  height: 20px;
+  background-color: $current-color;
+  width: 100px;
+  border-style: solid;
+  border-color: black;
+}
