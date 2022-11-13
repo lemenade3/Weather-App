@@ -26,7 +26,7 @@ async function storeCurrentCity(weatherData) {
 async function storeCurrentTemp(weatherData) {
     let data = await weatherData;
     results.currentTemp = data.list[0].main.temp
-}
+} 
 
 async function storeCurrentWeather(weatherData) {
     let data = await weatherData;

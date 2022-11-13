@@ -1,10 +1,29 @@
 function loadPage() {
+
     let body = document.querySelector('body')
+
+    // Creates top div
+
+    let top = document.createElement('div')
+    top.setAttribute('id', 'top')
+
     let input = document.createElement('input')
     let search = document.createElement('button')
     search.textContent = 'search'
 
-    let currentContainer = document.createElement('div')
+    top.append(input, search)
+
+    // creates main div
+
+    let main = document.createElement('div')
+    main.setAttribute('id', 'main')
+
+    let left = document.createElement('div')
+    left.setAttribute('id', 'left')
+
+    let currentWeather = document.createElement('div')
+    currentWeather.setAttribute('class', 'data')
+    currentWeather.setAttribute('id', 'weather')
 
     let currentCity = document.createElement('div')
     currentCity.setAttribute('class', 'data')
@@ -14,9 +33,10 @@ function loadPage() {
     currentTemp.setAttribute('class', 'data')
     currentTemp.setAttribute('id', 'temp')
 
-    let currentWeather = document.createElement('div')
-    currentWeather.setAttribute('class', 'data')
-    currentWeather.setAttribute('id', 'weather')
+    left.append(currentWeather, currentCity, currentTemp)
+
+    let right = document.createElement('div')
+    right.setAttribute('id', 'right')
 
     let currentMax = document.createElement('div')
     currentMax.setAttribute('class', 'data')
@@ -30,11 +50,24 @@ function loadPage() {
     currentHumidity.setAttribute('class', 'data')
     currentHumidity.setAttribute('id', 'humidity')
 
-    currentContainer.append(currentCity, currentTemp, currentWeather, currentMax, currentMin, currentHumidity)
+    let currentChanceOfRain = document.createElement('div')
+    currentChanceOfRain.setAttribute('class', 'data')
+    currentChanceOfRain.setAttribute('id', 'chanceOfRain')
+
+    right.append(currentMax, currentMin, currentHumidity, currentChanceOfRain)
+    main.append(left, right)
+
+    let bottom = document.createElement('div')
+    bottom.setAttribute('id', 'bottom')
+
+    let bottomMain = document.createElement('div')
+    bottomMain.setAttribute('id', 'bottomMain')
 
     let forecastContainer = document.createElement('div')
+    forecastContainer.setAttribute('id', 'forecastContainer')
 
     for (let i = 0; i < 15; i++) {
+        let timeContainer = document.createElement('div')
         let dateTime = document.createElement('div')
         dateTime.setAttribute('class', 'data')
         dateTime.setAttribute('id', `dateTime${i}`)
@@ -44,10 +77,29 @@ function loadPage() {
         let weather = document.createElement('div')
         weather.setAttribute('class', 'data')
         weather.setAttribute('id', `weather${i}`)
-        forecastContainer.append(dateTime, temp, weather)
+        timeContainer.append(dateTime, temp, weather)
+        forecastContainer.append(timeContainer)
     }
 
-    body.append(input, search, currentContainer, forecastContainer)
+    let masthead = document.createElement('div')
+    masthead.setAttribute('id', 'masthead')
+    masthead.textContent = 'Created by OJB 2022'
+
+    bottomMain.append(forecastContainer, masthead)
+
+    let bottomRight = document.createElement('div')
+    bottomRight.setAttribute('id', 'bottomRight')
+
+    let units = document.createElement('div')
+    units.setAttribute('id', 'units')
+    units.textContent = 'placeholder'
+
+    bottomRight.append(units)
+
+    bottom.append(bottomMain, bottomRight)
+
+
+    body.append(top, main, bottom)
 }
 
 export {loadPage}
