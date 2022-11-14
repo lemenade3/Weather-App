@@ -28,7 +28,6 @@ function loadPage() {
     left.setAttribute('id', 'left')
 
     let currentWeather = document.createElement('div')
-    currentWeather.setAttribute('class', 'data')
     currentWeather.setAttribute('id', 'weather')
 
     let currentCity = document.createElement('div')

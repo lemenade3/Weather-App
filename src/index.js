@@ -8,10 +8,16 @@ loadPage();
 let search = document.querySelector('img');
 let input = document.querySelector('input')
 
-search.addEventListener('click', async () => {
-    let data = await callAPI(input.value)
+async function returnResults(location) {
+    let data = await callAPI(location)
     displayResults(data);
+}
+
+search.addEventListener('click', async () => {
+    returnResults(input.value)
 })
+
+returnResults('London')
 
 // should be individual functions for each of the required varaiables, each one
 // is called when the search button is clicked
