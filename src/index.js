@@ -5,7 +5,7 @@ import {displayResults} from './domManipulation'
 
 loadPage();
 
-let search = document.querySelector('button');
+let search = document.querySelector('img');
 let input = document.querySelector('input')
 
 search.addEventListener('click', async () => {

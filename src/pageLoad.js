@@ -1,3 +1,5 @@
+import SearchIcon from './search.svg'
+
 function loadPage() {
 
     let body = document.querySelector('body')
@@ -7,11 +9,15 @@ function loadPage() {
     let top = document.createElement('div')
     top.setAttribute('id', 'top')
 
-    let input = document.createElement('input')
-    let search = document.createElement('button')
-    search.textContent = 'search'
+    let form = document.createElement('form')
 
-    top.append(input, search)
+    let input = document.createElement('input')
+    const search = new Image();
+    search.src = SearchIcon
+
+    form.append(input, search)
+
+    top.append(form)
 
     // creates main div
 
@@ -60,9 +66,6 @@ function loadPage() {
     let bottom = document.createElement('div')
     bottom.setAttribute('id', 'bottom')
 
-    let bottomMain = document.createElement('div')
-    bottomMain.setAttribute('id', 'bottomMain')
-
     let forecastContainer = document.createElement('div')
     forecastContainer.setAttribute('id', 'forecastContainer')
 
@@ -85,18 +88,11 @@ function loadPage() {
     masthead.setAttribute('id', 'masthead')
     masthead.textContent = 'Created by OJB 2022'
 
-    bottomMain.append(forecastContainer, masthead)
-
-    let bottomRight = document.createElement('div')
-    bottomRight.setAttribute('id', 'bottomRight')
-
     let units = document.createElement('div')
     units.setAttribute('id', 'units')
     units.textContent = 'placeholder'
 
-    bottomRight.append(units)
-
-    bottom.append(bottomMain, bottomRight)
+    bottom.append(forecastContainer, masthead, units)
 
 
     body.append(top, main, bottom)
