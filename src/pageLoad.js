@@ -31,11 +31,9 @@ function loadPage() {
     currentWeather.setAttribute('id', 'weather')
 
     let currentCity = document.createElement('div')
-    currentCity.setAttribute('class', 'data')
     currentCity.setAttribute('id', 'city')
 
     let currentTemp = document.createElement('div')
-    currentTemp.setAttribute('class', 'data')
     currentTemp.setAttribute('id', 'temp')
 
     left.append(currentWeather, currentCity, currentTemp)
@@ -44,22 +42,15 @@ function loadPage() {
     right.setAttribute('id', 'right')
 
     let currentMax = document.createElement('div')
-    currentMax.setAttribute('class', 'data')
     currentMax.setAttribute('id', 'max')
 
     let currentMin = document.createElement('div')
-    currentMin.setAttribute('class', 'data')
     currentMin.setAttribute('id', 'min')
 
     let currentHumidity = document.createElement('div')
-    currentHumidity.setAttribute('class', 'data')
     currentHumidity.setAttribute('id', 'humidity')
 
-    let currentChanceOfRain = document.createElement('div')
-    currentChanceOfRain.setAttribute('class', 'data')
-    currentChanceOfRain.setAttribute('id', 'chanceOfRain')
-
-    right.append(currentMax, currentMin, currentHumidity, currentChanceOfRain)
+    right.append(currentMax, currentMin, currentHumidity)
     main.append(left, right)
 
     let bottom = document.createElement('div')

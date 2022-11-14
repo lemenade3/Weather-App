@@ -3,16 +3,15 @@ async function displayResults(results) {
     let city = document.querySelector('#city')
     let temp = document.querySelector('#temp')
     let weather = document.querySelector('#weather')
-    let max = document.querySelector('#max')
-    let min = document.querySelector('#min')
+    let minMax = document.querySelector('#minMax')
     let humidity = document.querySelector('#humidity')
 
         city.textContent = results.currentCity;
-        temp.textContent = results.currentTemp;
+        temp.textContent = `${results.currentTemp} ºC`;
         weather.textContent = results.currentWeather;
-        max.textContent = results.currentMax;
-        min.textContent = results.currentMin;
-        humidity.textContent = results.currentHumidity;
+        max.textContent = `${results.currentMax} ºC`;
+        min.textContent = `${results.currentMin} ºC`;
+        humidity.textContent = `${results.currentHumidity} %`;
         
         for (let i = 0; i < results.forecastObjects.length; i++) {
 

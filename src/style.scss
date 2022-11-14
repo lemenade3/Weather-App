@@ -2,9 +2,14 @@ $background-img: url(./background.svg);
 $line-colouring: rgb(33, 37, 103);
 @font-face {
   font-family: title-font;
-  src: url(./fonts/Poppins/Poppins-Bold.ttf);
+  src: url(./fonts/Poppins/Poppins-Light.ttf);
+}
+@font-face {
+  font-family: city-font;
+  src: url(./fonts/Poppins/Poppins-Regular.ttf);
 }
 $title: title-font;
+$city-font: city-font;
 
 body {
   background: $background-img no-repeat;
@@ -20,6 +25,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    #right {
+      display: flex;
+
+      div {
+        background-color: red;
+        height: 100px;
+        width: 80px;
+      }
+    }
   }
 
   #bottom {
@@ -77,4 +92,14 @@ form {
 #weather {
   font-family: $title;
   font-size: 2rem;
+}
+
+#city {
+  font-family: $city-font;
+  font-size: 3.5rem;
+}
+
+#temp {
+  font-family: $title;
+  font-size: 2.5rem;
 }
