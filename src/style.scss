@@ -8,8 +8,13 @@ $line-colouring: rgb(33, 37, 103);
   font-family: city-font;
   src: url(./fonts/Poppins/Poppins-Regular.ttf);
 }
+@font-face {
+  font-family: standard-font;
+  src: url(./fonts/Poppins/Poppins-Thin.ttf);
+}
 $title: title-font;
 $city-font: city-font;
+$standard: standard-font;
 
 body {
   background: $background-img no-repeat;
@@ -28,12 +33,31 @@ body {
 
     #right {
       display: flex;
+      flex-direction: column;
 
-      div {
+      #extraData {
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        border-style: solid;
+        padding: 10px;
+
+        div {
         background-color: red;
-        height: 100px;
-        width: 80px;
+        display: flex;
+
+        div {
+          width: 80px;
+          height: 60px;
+          font-family: $standard;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.3rem;
+        }
+        }
       }
+
+      
     }
   }
 
@@ -73,17 +97,19 @@ form {
   input {
     width: 90%;
     border: none;
+    padding: 5px;
     background-color: none;
+    font-family: $standard;
+    font-size: 1.2rem;
     &:focus {
       outline: none;
     }
   }
 }
 
-
 .data {
   height: 20px;
-  background-color: $line-colouring;
+  background-color: red;
   width: 300px;
   border-style: solid;
   border-color: black;

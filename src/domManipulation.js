@@ -1,14 +1,20 @@
+import {returnIcon} from './iconSelector'
+
 async function displayResults(results) {
 
     let city = document.querySelector('#city')
     let temp = document.querySelector('#temp')
     let weather = document.querySelector('#weather')
-    let minMax = document.querySelector('#minMax')
+    let weatherIcon = document.querySelector('#weatherIcon')
+    let min = document.querySelector('#min')
+    let max = document.querySelector('#max')
     let humidity = document.querySelector('#humidity')
+
 
         city.textContent = results.currentCity;
         temp.textContent = `${results.currentTemp} ºC`;
         weather.textContent = results.currentWeather;
+        weatherIcon.src = returnIcon(results.currentWeatherIcon);
         max.textContent = `${results.currentMax} ºC`;
         min.textContent = `${results.currentMin} ºC`;
         humidity.textContent = `${results.currentHumidity} %`;

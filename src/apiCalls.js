@@ -12,6 +12,7 @@ let results = {
     currentCity: 0,
     currentTemp: 0,
     currentWeather: 0,
+    currentWeatherIcon: 0,
     currentMax: 0,
     currentMin: 0,
     currentHumidity: 0,
@@ -31,6 +32,11 @@ async function storeCurrentTemp(weatherData) {
 async function storeCurrentWeather(weatherData) {
     let data = await weatherData;
     results.currentWeather = data.list[0].weather[0].main
+}
+
+async function storeCurrentWeatherIcon(weatherData) {
+    let data = await weatherData;
+    results.currentWeatherIcon = data.list[0].weather[0].icon
 }
 
 async function storeCurrentMax(weatherData) {
@@ -63,13 +69,16 @@ async function storeForecast(weatherData) {
 
 async function callAPI(value) {
     let weatherData = getWeatherData(value);
-    storeCurrentCity(weatherData);
-    storeCurrentTemp(weatherData)
-    storeCurrentWeather(weatherData)
-    storeCurrentMax(weatherData);
-    storeCurrentMin(weatherData);
-    storeCurrentHumidity(weatherData);
-    return await storeForecast(weatherData).then(async () => {
+    return Promise.all([
+        storeCurrentCity(weatherData),
+        storeCurrentTemp(weatherData),
+        storeCurrentWeather(weatherData),
+        storeCurrentWeatherIcon(weatherData),
+        storeCurrentMax(weatherData),
+        storeCurrentMin(weatherData),
+        storeCurrentHumidity(weatherData),
+        storeForecast(weatherData),
+    ]).then(async () => {
         return results
     })
 }

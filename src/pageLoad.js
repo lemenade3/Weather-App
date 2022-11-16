@@ -40,6 +40,32 @@ function loadPage() {
 
     let right = document.createElement('div')
     right.setAttribute('id', 'right')
+    
+    let extraData = document.createElement('div')
+    extraData.setAttribute('id', 'extraData')
+
+    let dataTitles = document.createElement('div')
+    dataTitles.setAttribute('id', 'dataTitles')
+
+    let maxTitle = document.createElement('div')
+    maxTitle.setAttribute('id', 'maxTitle')
+    maxTitle.textContent = 'Max'
+
+    let minTitle = document.createElement('div')
+    minTitle.setAttribute('id', 'minTitle')
+    minTitle.textContent = 'Min'
+
+    let humidityTitle = document.createElement('div')
+    humidityTitle.setAttribute('id', 'humidityTitle')
+    humidityTitle.textContent = 'Humidity'
+
+    dataTitles.append(minTitle, maxTitle, humidityTitle)
+
+    let dataValues = document.createElement('div')
+    dataValues.setAttribute('id', 'dataValues')
+
+    let currentWeatherIcon = new Image()
+    currentWeatherIcon.setAttribute('id', 'weatherIcon')
 
     let currentMax = document.createElement('div')
     currentMax.setAttribute('id', 'max')
@@ -50,7 +76,11 @@ function loadPage() {
     let currentHumidity = document.createElement('div')
     currentHumidity.setAttribute('id', 'humidity')
 
-    right.append(currentMax, currentMin, currentHumidity)
+    dataValues.append(currentMin, currentMax, currentHumidity)
+
+    extraData.append(dataTitles, dataValues)
+
+    right.append(currentWeatherIcon, extraData)
     main.append(left, right)
 
     let bottom = document.createElement('div')
