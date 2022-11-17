@@ -1,3 +1,5 @@
+// Various weather icons
+
 import D01 from './weather-icons/01d.svg'
 import N01 from './weather-icons/01n.svg'
 import D02 from './weather-icons/02d.svg'

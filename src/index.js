@@ -1,7 +1,11 @@
+// Imports of required functions and stylesheets
+
 import {loadPage} from './pageLoad'
 import {callAPI, changeUnit} from './apiCalls'
 import "./style.scss"
 import {displayResults, changeDomUnit} from './domManipulation'
+
+// Initial page load
 
 loadPage();
 
@@ -19,13 +23,13 @@ search.addEventListener('click', async () => {
     returnResults(input.value)
 })
 
-input.addEventListener('keypress', (e) => {
+input.addEventListener('keypress', (e) => { // allows enter to submit input
     if (e.key === 'Enter') {
         search.click()
     }
 })
 
-units.addEventListener('click', async () => {
+units.addEventListener('click', async () => { // This code block changes all units used
     changeUnit()
     changeDomUnit()
     returnResults(city.textContent)
@@ -36,24 +40,6 @@ units.addEventListener('click', async () => {
     if (units.textContent === 'ºF') {
         units.textContent = 'ºC'
     }
-    // upon clicking button a function should be called from within api
-    // function should change a units varaible to imperial if metric and to metric if imperial
-    // input.value should be stored in separate variable to allow button click to call return results again
-    // button text content will be managed within index
-    // units variable will be stored directly within template string literal
-    // will be set to C as default
-    // units will need to be changed within domManipulation using variable and template string literal
 })
 
 returnResults('London')
-
-// should be individual functions for each of the required varaiables, each one
-// is called when the search button is clicked
-// Search button will after calling all the async functions and returning the data, call the
-// display results function.
-
-
-
-/* get figures for each of main areas including location, temp, weather, humidty and min/max's
-write a for loop that loops through each item in the 'list' array, excluding 0 and 
-writes the temp, time, date, weather and chance of precipitation. */

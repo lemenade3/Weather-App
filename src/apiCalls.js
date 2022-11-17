@@ -95,12 +95,3 @@ async function callAPI(value) {
 }
 
 export {callAPI, changeUnit}
-
-/* call api should change values in an object that has values for each of the required
-current questions and forecast.
-
-call api should then return that object.
-
-Inside index.js callAPI can then be used as an argument in display results.
-
-display results then takes that object and uses it to populate the divs. */

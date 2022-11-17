@@ -1,4 +1,8 @@
+// Imports icons for Weather
+
 import {returnIcon} from './iconSelector'
+
+// responsible for changing units shown in DOM
 
 let unit = 'C'
 
