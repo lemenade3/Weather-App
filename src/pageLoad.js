@@ -91,6 +91,9 @@ function loadPage() {
 
     for (let i = 0; i < 15; i++) {
         let timeContainer = document.createElement('div')
+        timeContainer.setAttribute('class', 'time')
+        let icon = new Image()
+        icon.setAttribute('id', `icon${i}`)
         let dateTime = document.createElement('div')
         dateTime.setAttribute('class', 'data')
         dateTime.setAttribute('id', `dateTime${i}`)
@@ -100,13 +103,16 @@ function loadPage() {
         let weather = document.createElement('div')
         weather.setAttribute('class', 'data')
         weather.setAttribute('id', `weather${i}`)
-        timeContainer.append(dateTime, temp, weather)
+        let date = document.createElement('div')
+        date.setAttribute('class', 'data')
+        date.setAttribute('id', `date${i}`)
+        timeContainer.append(dateTime, icon, weather, temp, date)
         forecastContainer.append(timeContainer)
     }
 
     let masthead = document.createElement('div')
     masthead.setAttribute('id', 'masthead')
-    masthead.textContent = 'Created by OJB 2022'
+    masthead.textContent = 'Copyright Oliver Browning 2022'
 
     let units = document.createElement('div')
     units.setAttribute('id', 'units')

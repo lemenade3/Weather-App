@@ -87,6 +87,23 @@ body {
       background-color: $sub-data;
       padding: $data-padding;
       margin: 20px;
+
+      .time {
+        display: flex;
+        flex-direction: column;
+        border-right: solid;
+        padding: $data-padding;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &:last-child {
+        border-right: none;
+      }
+      
+      img {
+        height: 60px;
+      }
     }
 
     #units {
@@ -128,6 +145,9 @@ form {
   height: 20px;
   width: 180px;
   font-family: $standard;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #weather {

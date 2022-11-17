@@ -7,6 +7,7 @@ loadPage();
 
 let search = document.querySelector('img');
 let input = document.querySelector('input')
+let form = document.querySelector('form')
 
 async function returnResults(location) {
     let data = await callAPI(location)
@@ -14,6 +15,10 @@ async function returnResults(location) {
 }
 
 search.addEventListener('click', async () => {
+    returnResults(input.value)
+})
+
+form.addEventListener('submit', async () => {
     returnResults(input.value)
 })
 

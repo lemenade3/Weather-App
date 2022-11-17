@@ -60,15 +60,17 @@ async function storeForecast(weatherData) {
     let dataList = await data.list
     for (let i = 0; i < dataList.length; i++) {
         results.forecastObjects.push({
-            dateTime: dataList[i].dt_txt,
+            dateTime: dataList[i].dt,
             temp: dataList[i].main.temp,
-            weather: dataList[i].weather[0].main
+            weather: dataList[i].weather[0].main,
+            icon: dataList[i].weather[0].icon,
         })
     }
 }
 
 async function callAPI(value) {
     let weatherData = getWeatherData(value);
+    console.log(weatherData)
     return Promise.all([
         storeCurrentCity(weatherData),
         storeCurrentTemp(weatherData),
