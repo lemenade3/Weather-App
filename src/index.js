@@ -7,7 +7,6 @@ loadPage();
 
 let search = document.querySelector('img');
 let input = document.querySelector('input')
-let form = document.querySelector('form')
 let units = document.querySelector('#units')
 let city = document.querySelector('#city')
 
@@ -20,8 +19,10 @@ search.addEventListener('click', async () => {
     returnResults(input.value)
 })
 
-form.addEventListener('submit', async () => {
-    returnResults(input.value)
+input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        search.click()
+    }
 })
 
 units.addEventListener('click', async () => {

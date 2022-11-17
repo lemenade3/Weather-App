@@ -9,7 +9,8 @@ function loadPage() {
     let top = document.createElement('div')
     top.setAttribute('id', 'top')
 
-    let form = document.createElement('form')
+    let form = document.createElement('div')
+    form.setAttribute('id', 'form')
 
     let input = document.createElement('input')
     const search = new Image();
