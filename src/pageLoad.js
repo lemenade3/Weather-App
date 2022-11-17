@@ -114,9 +114,9 @@ function loadPage() {
     masthead.setAttribute('id', 'masthead')
     masthead.textContent = 'Copyright Oliver Browning 2022'
 
-    let units = document.createElement('div')
+    let units = document.createElement('button')
     units.setAttribute('id', 'units')
-    units.textContent = 'placeholder'
+    units.textContent = 'ºF'
 
     bottom.append(forecastContainer, masthead, units)
 

@@ -1,7 +1,16 @@
+let unit = 'metric'
+
+function changeUnit() {
+    if (unit === 'metric') {
+        unit = 'imperial'
+    } else if (unit === 'imperial') {
+        unit = 'metric'
+    }
+}
 
 async function getWeatherData(value) {
     let city = value
-    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5f9ff8597ccefcd57f95ed9c70d2de3e&units=metric`
+    let url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=5f9ff8597ccefcd57f95ed9c70d2de3e&units=${unit}`
 
     const response = await fetch(url, {mode: 'cors'});
     const weatherData = await response.json();
@@ -85,7 +94,7 @@ async function callAPI(value) {
     })
 }
 
-export {callAPI}
+export {callAPI, changeUnit}
 
 /* call api should change values in an object that has values for each of the required
 current questions and forecast.

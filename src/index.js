@@ -1,13 +1,15 @@
 import {loadPage} from './pageLoad'
-import {callAPI} from './apiCalls'
+import {callAPI, changeUnit} from './apiCalls'
 import "./style.scss"
-import {displayResults} from './domManipulation'
+import {displayResults, changeDomUnit} from './domManipulation'
 
 loadPage();
 
 let search = document.querySelector('img');
 let input = document.querySelector('input')
 let form = document.querySelector('form')
+let units = document.querySelector('#units')
+let city = document.querySelector('#city')
 
 async function returnResults(location) {
     let data = await callAPI(location)
@@ -20,6 +22,26 @@ search.addEventListener('click', async () => {
 
 form.addEventListener('submit', async () => {
     returnResults(input.value)
+})
+
+units.addEventListener('click', async () => {
+    changeUnit()
+    changeDomUnit()
+    returnResults(city.textContent)
+
+    if (units.textContent === 'ºC') {
+        units.textContent = 'ºF'
+    }
+    if (units.textContent === 'ºF') {
+        units.textContent = 'ºC'
+    }
+    // upon clicking button a function should be called from within api
+    // function should change a units varaible to imperial if metric and to metric if imperial
+    // input.value should be stored in separate variable to allow button click to call return results again
+    // button text content will be managed within index
+    // units variable will be stored directly within template string literal
+    // will be set to C as default
+    // units will need to be changed within domManipulation using variable and template string literal
 })
 
 returnResults('London')
